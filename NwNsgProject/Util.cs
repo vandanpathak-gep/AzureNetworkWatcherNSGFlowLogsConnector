@@ -13,7 +13,7 @@ namespace nsgFunc
 {
     public partial class Util
     {
-        const int MAXTRANSMISSIONSIZE = 200 * 1024;
+        const int MAXTRANSMISSIONSIZE = 150 * 1024;
 
         public static string GetEnvironmentVariable(string name)
         {
