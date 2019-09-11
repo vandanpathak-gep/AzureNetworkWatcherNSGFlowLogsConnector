@@ -185,15 +185,26 @@ namespace nsgFunc
                                     tuple);
 
                                 var sizeOfDenormalizedRecord = denormalizedRecord.GetSizeOfJSONObject();
+                                                               //new-code-start
+                               if (sizeOfDenormalizedRecord > 120) // this will chunk below 256KB
+                                {
+                                    yield return outgoingList;
+                                    outgoingList.Clear();
+                                    sizeOfListItems = 0;
+                                }
+                                //new-code-end                                
 
+/*
                                 if (sizeOfListItems + sizeOfDenormalizedRecord > MAXTRANSMISSIONSIZE + 20)
                                 {
                                     yield return outgoingList;
                                     outgoingList.Clear();
                                     sizeOfListItems = 0;
                                 }
+                                */
                                 outgoingList.Add(denormalizedRecord);
-                                sizeOfListItems += sizeOfDenormalizedRecord;
+                                //sizeOfListItems += sizeOfDenormalizedRecord;
+                                sizeOfListItems += 1;
                             }
                         }
                     }
