@@ -186,7 +186,8 @@ namespace nsgFunc
 
                                 var sizeOfDenormalizedRecord = denormalizedRecord.GetSizeOfJSONObject();
                                                                //new-code-start
-                               if (sizeOfDenormalizedRecord > 120) // this will chunk below 256KB
+                               //if (sizeOfDenormalizedRecord > 120) // this will chunk below 256KB
+                                if (sizeOfListItems > 120)
                                 {
                                     yield return outgoingList;
                                     outgoingList.Clear();
